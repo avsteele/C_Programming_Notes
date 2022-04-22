@@ -2,11 +2,13 @@
 
 Time to write and run your first `C` program on the computer. We are going to get set up so you can code right in your web browser.
 
-<TODO: LINK TO video showing how to set up at repl.>
+> TODO: Link to video showing how to set up at replit. 
+
+> You might not need the video, you can just go to [REPLIT.com](https://replit.com), create an account, then "Make a new Repl" then choose the `C` template.
 
 After watching the above you should have your [REPLIT](https://replit.com) account set up and be able to write some `C`.
 
-By the end of this chapter you will be able to write programs that can print out messages to the user and get input from thier keyboard.
+By the end of this chapter you will be able to write programs that can print out messages to the user and get input from their keyboard.
 
 ## The REPLIT interface
 
@@ -16,7 +18,7 @@ On the left is a window with a list of the files in our project. For now we will
 
 In the middle is a window showing the contents of the `main.c` text file. By convention `C` code files have file  names ending with `.c` or `.h`.
 
-THe dark window on the right is the window which will show the output of our program when we run it. You can also type commands here as well. This is called the **Console**
+The dark window on the right is the window which will show the output of our program when we run it. You can also type commands here as well. This is called the **Console**
 
 If you click the green button at the top you can see some things output in Console. You can do this now if you like or wait until we review the code first below.
 
@@ -29,6 +31,8 @@ int main() {
   return 0;
 }
 ```
+
+> I recommend copying the examples in this chapter into your REPLIT so you can play around with them.
 
 Remember when I said the names of functions didn't affect their behavior? Well, there is one exception. All `C` programs start working in a special function called `main`. It has to have this name (with correct capitalization) for your program to work.
 
@@ -66,6 +70,9 @@ int main() {
 ```
 
 Everything on a line following a `//` will be ignored by the compiler. Use comments to document what your code is doing.  The more complex your code is the more important this becomes.
+
+> Since all the work in this chapter is simple you can just delete the contents of your `main.c` file and replace them with the new code when moving to the next example or doing the exercises.
+
 
 ## Printing Console
 
