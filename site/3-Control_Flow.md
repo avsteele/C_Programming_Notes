@@ -1,4 +1,5 @@
-# Control Flow
+[Part 2](./2-Writing_Programs.md)
+# 3 - Control Flow
 
 This section will cover `C` statements, as well as some simple structures that will allow your program to alter its behavior based on the data it receives. These are the basic building blocks on which all programs are built.
 

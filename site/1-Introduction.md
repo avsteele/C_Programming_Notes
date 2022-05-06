@@ -1,8 +1,9 @@
-# 1- Introduction
+[Back](./index.md), [Forward](./2-Writing_Programs.md)
+# 1 - Introduction
 
 This book will try to teach you the basics of the `C` programming language. It does not assume you have any programming experience. It is helpful to have taken enough math to know what a function is (<https://en.wikipedia.org/wiki/Function_(mathematics)>).
 
-All the exercises in chapter 1 can be done with pen and paper. You can check your answers [here](/1-Introduction_answers.md). We'll start programming  on the computer in Chapter 2.
+All the exercises in chapter 1 can be done with pen and paper. You can check your answers [here](./1-Introduction-Answers.md). We'll start programming  on the computer in Chapter 2.
 
 ## Functions
 
@@ -27,7 +28,7 @@ Programming in `C` or any other language can mostly be thought of as giving the 
 > 1) Write a mathematical function which returns twice the input
 > 2) Write a mathematical function which return the negative of its input
 
-[Answers](/1-Introduction_answers.md)
+[Answers](./1-Introduction-Answers.md)
 
 If we wanted to write the mathematical function above as a function in the `C` language it would look like this:
 
@@ -40,7 +41,7 @@ int PlusOne(int x)
 
 This might look a like hieroglyphics at first so we are going to break it down one piece at a time.
 
-In `C` we always tell the computer the [type](/Terms.md/) of data we are dealing with. `int` above stands for *integer* which means a positive or negative whole number.  -1, 0, 1, and 1234567 are integers.  0.123 is not an integer.  (We'll talk about other types later). In line 1 the first thing written is the [type](/Terms.md/) of data the function will output, which in this case is `int`.
+In `C` we always tell the computer the [type](./Terms.md) of data we are dealing with. `int` above stands for *integer* which means a positive or negative whole number.  -1, 0, 1, and 1234567 are integers.  0.123 is not an integer.  (We'll talk about other types later). In line 1 the first thing written is the [type](./Terms.md) of data the function will output, which in this case is `int`.
 
 Next we have at least one space, then the function's name; in this case `PlusOne`. The name can be almost anything but can't start with a number and can't include a few other special characters like spaces. **The name does not have any effect on the function's behavior**. I called this function `PlusOne` because that is a good description of what it does, but if I called it `MultiplyBy100`, or `AAA` the computer would still do the same calculations. It is a good idea to choose a name that gives some idea of what the function does; this will make using it later a lot easier.
 
@@ -50,7 +51,7 @@ Thats all for line 1!
 
 Next we enclose the part of the function where the *work* happens with `{ }` curly brackets. These brackets don't *do* anything except tell the computer where the start and end of the function is.
 
-Inside the brackets are [statement](/Terms.md/)s. Statements tell the computer how to product the output from the inputs. Statements always end with a `;` (semicolon). The `;` does not *do* anything. It just helps the computer to know the statement is over. This function has a single `return` statement. The statement:
+Inside the brackets are [statement](./Terms.md)s. Statements tell the computer how to product the output from the inputs. Statements always end with a `;` (semicolon). The `;` does not *do* anything. It just helps the computer to know the statement is over. This function has a single `return` statement. The statement:
 
 ```c
     return <whatever>;
@@ -68,11 +69,11 @@ int PlusOne(int x){return x+1;}
 
 but most people find this harder to read. Another similar convention you will see in almost all `C` code to make it easier to read is to indent a few spaces when we are inside a `{  }`.
 
-THe technical term for *using* a function is [call](/Terms.md)ing the function. To call our function above we would write `PlusOne(5)`.  Any place you write `PlusOne(5)` in our program it is basically the same as inserting a `6`.
+THe technical term for *using* a function is [call](./Terms.md)ing the function. To call our function above we would write `PlusOne(5)`.  Any place you write `PlusOne(5)` in our program it is basically the same as inserting a `6`.
 
 > Exercise 2: What value is output (returned) by `PlusOne(-1)`?
 
-[Answers](/1-Introduction_answers.md)
+[Answers](./1-Introduction-Answers.md)
 
 ### Function Inputs
 
@@ -102,7 +103,7 @@ you just separate each input with a comma.
 > 2) Write a `C` function which returns takes a single integer input parameter returns the negative of it.
 > 3) Write a `C` function which takes two integer parameters and returns the first minus the second
 
-[Answers](/1-Introduction_answers.md)
+[Answers](./1-Introduction-Answers.md)
 
 ## Variables
 
@@ -144,7 +145,7 @@ int AddThreeTimes_v2(int x)
 
 ## Types
 
-Whether we are store values in variables, or are defining function's inputs or outputs we always need to tell `C` what kind of data we are working with, this is called the data's [type](/Terms.md/). Some simple types are described below, we'll cover more complex types later.
+Whether we are store values in variables, or are defining function's inputs or outputs we always need to tell `C` what kind of data we are working with, this is called the data's [type](./Terms.md). Some simple types are described below, we'll cover more complex types later.
 
 ### `int`
 
@@ -195,8 +196,8 @@ Sets of characters can be used to display messages to the user. I'll show you ho
 ## Summary
 
 * `C` functions take some data input and produce some output.
-* You always tell `C` the [type](/Terms.md/) of data we are working with
+* You always tell `C` the [type](./Terms.md) of data we are working with
 * You the names of functions and variables will not affect the behavior
 * Some common types are `int`s like 5, `double`s like `3.1412` and `char`s like `'Z'`
 
-[To Chapter 2](/2-Writing_Programs.md)
+[Index](./index.md), [To Chapter 2](./2-Writing_Programs.md)

@@ -1,4 +1,6 @@
-# Writing `C` Programs
+[Back](./1-Introduction.md), [Forward](./3-Control_Flow.md)
+
+# 2 - Writing `C` Programs
 
 Time to write and run your first `C` program on the computer. We are going to get set up so you can code right in your web browser.
 
@@ -109,7 +111,7 @@ int main() {
 
 Now that you've tried the code above and seen it outputs `HelloGoodbye` to the console, let's discuss what it is doing.
 
-`#include <stdio.h>` adds the code from the file `stdio.h` to `main.c`. This file isn't in our list of files on the left, rather it is from the [Standard Library](/Terms.md/) that comes with the version of `C` we are using here. The compiler knows where to look for this file. `stdio` is short for "**st**an**d**ard **i**nput/**o**utput"; it has functions that let us print to the screen, read from the user's keyboard, and work with files, and more.
+`#include <stdio.h>` adds the code from the file `stdio.h` to `main.c`. This file isn't in our list of files on the left, rather it is from the [Standard Library](./Terms.md) that comes with the version of `C` we are using here. The compiler knows where to look for this file. `stdio` is short for "**st**an**d**ard **i**nput/**o**utput"; it has functions that let us print to the screen, read from the user's keyboard, and work with files, and more.
 
 The `printf` function lets you print some text to the console. Here it will print `Hello`. Enter the code above into your Replit and run it to see this printed to the console. What if we wanted our `Goodbye` to start on a new line after `Hello`? You **cannot** do it like the code below:
 
@@ -271,3 +273,5 @@ With this chapter complete you:
 * have a basic understanding of what an array is
 
 In the next section we will see how your programs can alter their behavior conditional on user input.
+
+[Chapter 1](./1-Introduction.md), [Chapter 3](./3-Control_Flow.md)

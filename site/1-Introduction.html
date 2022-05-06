@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
+
+<link rel="stylesheet" href="base.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/styles/stackoverflow-dark.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    </head>
+<body>
+<p><a href="./index.html">Back</a>, <a href="./2-Writing_Programs.html">Forward</a></p>
+<h1>1 - Introduction</h1>
+<p>This book will try to teach you the basics of the <code>C</code> programming language. It does not assume you have any programming experience. It is helpful to have taken enough math to know what a function is (<a href="https://en.wikipedia.org/wiki/Function_(mathematics)">https://en.wikipedia.org/wiki/Function_(mathematics)</a>).</p>
+<p>All the exercises in chapter 1 can be done with pen and paper. You can check your answers <a href="./1-Introduction-Answers.html">here</a>. We'll start programming  on the computer in Chapter 2.</p>
+<h2>Functions</h2>
+<p>Mathematical functions take some input and produce an output:</p>
+<p><img src="function.png" alt="function graphic" title="Function"></p>
+<p>Below is a mathematical function.</p>
+<section><eqn><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>x</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">f(x) = x + 1 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></span></eqn></section><p>It takes some input number, <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span></eq>, and returns some other number, <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></eq>. Using the function is just a matter of doing the math: <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mn>5</mn><mo stretchy="false">)</mo><mo>=</mo><mn>5</mn><mo>+</mo><mn>1</mn><mo>=</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">f(5)= 5 + 1 =6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord">5</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">5</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">6</span></span></span></span></eq> and <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mo>=</mo><mo>−</mo><mn>1</mn><mo>+</mo><mn>1</mn><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f(-1)= -1 + 1 = 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord">−</span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">−</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span></eq>. <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span></span></span></span></eq> is just a name, which could be anything we like. We could write the same function as</p>
+<section><eqn><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>P</mi><mi>l</mi><mi>u</mi><mi>s</mi><mi>O</mi><mi>n</mi><mi>e</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>x</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">PlusOne(x) = x + 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">Pl</span><span class="mord mathnormal">u</span><span class="mord mathnormal">s</span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mord mathnormal">n</span><span class="mord mathnormal">e</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></span></eqn></section><p>But its still the same function.</p>
+<p>Programming in <code>C</code> or any other language can mostly be thought of as giving the computer some input and having it calculate (compute) some output. The input can come from the user typing at their keyboard, using their mouse, or using reading some file on their computer or downloaded from the internet.</p>
+<blockquote>
+<p>Exercise 1  (written):</p>
+<ol>
+<li>Write a mathematical function which returns twice the input</li>
+<li>Write a mathematical function which return the negative of its input</li>
+</ol>
+</blockquote>
+<p><a href="./1-Introduction-Answers.html">Answers</a></p>
+<p>If we wanted to write the mathematical function above as a function in the <code>C</code> language it would look like this:</p>
+<pre><code class="language-c">int PlusOne(int x)
+{
+    return x + 1;
+}
+</code></pre>
+<p>This might look a like hieroglyphics at first so we are going to break it down one piece at a time.</p>
+<p>In <code>C</code> we always tell the computer the <a href="./Terms.html">type</a> of data we are dealing with. <code>int</code> above stands for <em>integer</em> which means a positive or negative whole number.  -1, 0, 1, and 1234567 are integers.  0.123 is not an integer.  (We'll talk about other types later). In line 1 the first thing written is the <a href="./Terms.html">type</a> of data the function will output, which in this case is <code>int</code>.</p>
+<p>Next we have at least one space, then the function's name; in this case <code>PlusOne</code>. The name can be almost anything but can't start with a number and can't include a few other special characters like spaces. <strong>The name does not have any effect on the function's behavior</strong>. I called this function <code>PlusOne</code> because that is a good description of what it does, but if I called it <code>MultiplyBy100</code>, or <code>AAA</code> the computer would still do the same calculations. It is a good idea to choose a name that gives some idea of what the function does; this will make using it later a lot easier.</p>
+<p>After the name, in the <code>(   )</code> parentheses we put the function <em>inputs</em>. There can be 0, 1 or more as shown below. This function has a single <code>int</code>eger input.</p>
+<p>Thats all for line 1!</p>
+<p>Next we enclose the part of the function where the <em>work</em> happens with <code>{ }</code> curly brackets. These brackets don't <em>do</em> anything except tell the computer where the start and end of the function is.</p>
+<p>Inside the brackets are <a href="./Terms.html">statement</a>s. Statements tell the computer how to product the output from the inputs. Statements always end with a <code>;</code> (semicolon). The <code>;</code> does not <em>do</em> anything. It just helps the computer to know the statement is over. This function has a single <code>return</code> statement. The statement:</p>
+<pre><code class="language-c">    return &lt;whatever&gt;;
+</code></pre>
+<p>means whatever follows <code>return</code> is the output.</p>
+<p>Because we told the computer that <code>PlusOne</code> will output an <code>int</code>  in line 1, that has to be the type of data that follows the word <code>return</code>.  If we tried to <code>return x+0.1</code> that would be an error, because if x is an integer then <code>x+0.1</code> is not an integer (not a whole number). If we forget a return statement that is also an error. I'll explain how the computer will let you know you've made an error later.</p>
+<p>You may also notice we put several spaces before the <code>return</code> statement (it is <em>indented</em>). These are optional, but most people think it makes it easier to read. The placement of <code>{}</code> on lines by themselves is optional too.  The program above can as easily be written</p>
+<pre><code class="language-c">int PlusOne(int x){return x+1;}
+</code></pre>
+<p>but most people find this harder to read. Another similar convention you will see in almost all <code>C</code> code to make it easier to read is to indent a few spaces when we are inside a <code>{  }</code>.</p>
+<p>THe technical term for <em>using</em> a function is <a href="./Terms.html">call</a>ing the function. To call our function above we would write <code>PlusOne(5)</code>.  Any place you write <code>PlusOne(5)</code> in our program it is basically the same as inserting a <code>6</code>.</p>
+<blockquote>
+<p>Exercise 2: What value is output (returned) by <code>PlusOne(-1)</code>?</p>
+</blockquote>
+<p><a href="./1-Introduction-Answers.html">Answers</a></p>
+<h3>Function Inputs</h3>
+<p>Our first function above has a single <code>int</code>eger as input. Some functions will have no inputs:</p>
+<pre><code class="language-c">int ReturnFive()
+{
+    return 5;
+}
+</code></pre>
+<p>Some functions will have more than one input</p>
+<pre><code class="language-c">int Sum(int input1, int input2)
+{
+    return input1 + input2;
+}
+</code></pre>
+<p>you just separate each input with a comma.</p>
+<blockquote>
+<p>Exercise 3:</p>
+<ol>
+<li>Write a <code>C</code> function which takes a input a a single integer parameter returns twice the value.</li>
+<li>Write a <code>C</code> function which returns takes a single integer input parameter returns the negative of it.</li>
+<li>Write a <code>C</code> function which takes two integer parameters and returns the first minus the second</li>
+</ol>
+</blockquote>
+<p><a href="./1-Introduction-Answers.html">Answers</a></p>
+<h2>Variables</h2>
+<p>Lets look at another function</p>
+<pre><code class="language-c">int AddThreeTimes(int x)
+{
+    return x + 5 + 5 + 5;
+}
+</code></pre>
+<p>Hopefully it is clear what this function is doing. But what if we decide to revise our function later and wanted to change the number we adding from <code>5</code> to something else? We'd have to remember everywhere we wrote <code>5</code> in our program and change each one. We can write this function differently to avoid this hazard.</p>
+<pre><code class="language-c">int AddThreeTimes(int x)
+{
+    int addMe = 5;
+    return x + addMe +addMe + addMe;
+}
+</code></pre>
+<p>Now the function has one extra statement on line 3 that defines a new variable called <code>addMe</code>. With this line we are telling the computer, <code>I want to store an integer value in the name addMe</code>. Now later if we want to use that value we can write <code>addMe</code> and will get the same result as putting that value there.</p>
+<p>The rules for valid names of variables are basically are the same as functions.  That is: names can contain all letters, some numbers and symbols, but can't start with a number.  Just like with function names, variable names Names don't effect how they are used. Name things whatever you like but try to make the name meaningful.</p>
+<p>You can change the value stored in a variable at any time in another statement as below:</p>
+<pre><code class="language-c">int AddThreeTimes_v2(int x)
+{
+    int addMe = 5;
+    addMe = 10;
+    return x + addMe +addMe + addMe;
+}
+</code></pre>
+<blockquote>
+<p>Exercise 4: What is the value returned by <code>AddThreeTimes_v2(11)</code>?</p>
+</blockquote>
+<h2>Types</h2>
+<p>Whether we are store values in variables, or are defining function's inputs or outputs we always need to tell <code>C</code> what kind of data we are working with, this is called the data's <a href="./Terms.html">type</a>. Some simple types are described below, we'll cover more complex types later.</p>
+<h3><code>int</code></h3>
+<p>This is the one we have seen already. <code>int</code>s are positive or negative whole numbers. The largest and smallest numbers that can be stored in an <code>int</code> will depend on the computer you are working with, but a range of <em>approximately</em> <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><msup><mn>2</mn><mn>32</mn></msup></mrow><annotation encoding="application/x-tex">-2^{32}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord">−</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">32</span></span></span></span></span></span></span></span></span></span></span></span></eq> (min) to <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>32</mn></msup></mrow><annotation encoding="application/x-tex">2^{32}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">32</span></span></span></span></span></span></span></span></span></span></span></span></eq> (max) is common.</p>
+<h3><code>float</code> and <code>double</code></h3>
+<p>To use decimals, we need something other than integers. Another numeric type is <code>float</code>. This stand for <code>floating point</code>, a fancy way of saying a number that <em>might</em> include a decimal point.  1,2,3 are floats, but so are <code>1.1</code> and <code>2.1</code> and <code>3.1</code> and <code>1,234.5</code>.  Floating point numbers are often written in <strong>exponential form</strong> like <code>334e6</code>, which is an easy way of writing <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>334</mn><mo>∗</mo><mn>1</mn><msup><mn>0</mn><mn>6</mn></msup></mrow><annotation encoding="application/x-tex">334 * 10^6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">334</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">6</span></span></span></span></span></span></span></span></span></span></span></eq>.</p>
+<p>We can only store up to a certain precision of number in a float. For example, you can't store the exact value of <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi></mrow><annotation encoding="application/x-tex">\pi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">π</span></span></span></span></eq> in a <code>float</code> because it would require it to store infinitely many digits and we'd run out of memory. (we'll learn more on computer memory in a future section)</p>
+<p>More often than <code>float</code> you will see and use the type <code>double</code> which is just a <code>float</code> that uses <strong>double</strong> the memory but has <strong>double</strong> the precision.</p>
+<p>Some examples of functions that use <code>double</code>:</p>
+<pre><code class="language-c">double PlusOnePointFive(double x)
+{
+    return x + 1.5;
+}
+
+double Square(double x)
+{
+    return x * x;
+}
+
+double Divide(double x, double y)
+{
+    return x / y;
+} 
+</code></pre>
+<blockquote>
+<p>Exercise 5: Write a function that takes a <code>double</code> named <code>radius</code> as input and returns a double which is the area of a circle with that radius. (hint: you can approximate <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi></mrow><annotation encoding="application/x-tex">\pi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">π</span></span></span></span></eq> as 3.1415)</p>
+</blockquote>
+<h3><code>char</code></h3>
+<p><code>char</code> is short for <strong>character</strong>.  Most of the letters, numbers, or symbols on your keyboard can be stored as a <code>char</code>.</p>
+<pre><code class="language-c">char GiveMeAnE()
+{
+    return 'E';
+}
+</code></pre>
+<p>Sets of characters can be used to display messages to the user. I'll show you how to do this in the next chapter.</p>
+<h2>Summary</h2>
+<ul>
+<li><code>C</code> functions take some data input and produce some output.</li>
+<li>You always tell <code>C</code> the <a href="./Terms.html">type</a> of data we are working with</li>
+<li>You the names of functions and variables will not affect the behavior</li>
+<li>Some common types are <code>int</code>s like 5, <code>double</code>s like <code>3.1412</code> and <code>char</code>s like <code>'Z'</code></li>
+</ul>
+<p><a href="./index.html">Index</a>, <a href="./2-Writing_Programs.html">To Chapter 2</a></p>
+</body>

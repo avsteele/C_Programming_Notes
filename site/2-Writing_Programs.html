@@ -1,0 +1,219 @@
+
+<!DOCTYPE html>
+<head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
+
+<link rel="stylesheet" href="base.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/styles/stackoverflow-dark.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    </head>
+<body>
+<p><a href="./1-Introduction.html">Back</a>, <a href="./3-Control_Flow.html">Forward</a></p>
+<h1>2 - Writing <code>C</code> Programs</h1>
+<p>Time to write and run your first <code>C</code> program on the computer. We are going to get set up so you can code right in your web browser.</p>
+<blockquote>
+<p>TODO: Link to video showing how to set up at replit.</p>
+</blockquote>
+<blockquote>
+<p>You might not need the video, you can just go to <a href="https://replit.com">REPLIT.com</a>, create an account, then &quot;Make a new Repl&quot; then choose the <code>C</code> template.</p>
+</blockquote>
+<p>After watching the above you should have your <a href="https://replit.com">REPLIT</a> account set up and be able to write some <code>C</code>.</p>
+<p>By the end of this chapter you will be able to write programs that can print out messages to the user and get input from their keyboard.</p>
+<h2>The REPLIT interface</h2>
+<p>With your new project open in REPLIT here is what you should see:</p>
+<p>On the left is a window with a list of the files in our project. For now we will just be working with the file it created for us automatically as part of the setup, called <code>main.c</code>.</p>
+<p>In the middle is a window showing the contents of the <code>main.c</code> text file. By convention <code>C</code> code files have file  names ending with <code>.c</code> or <code>.h</code>.</p>
+<p>The dark window on the right is the window which will show the output of our program when we run it. You can also type commands here as well. This is called the <strong>Console</strong></p>
+<p>If you click the green button at the top you can see some things output in Console. You can do this now if you like or wait until we review the code first below.</p>
+<h2>Exploring your first program</h2>
+<p>Lets return to the code in <code>main.c</code>. There are some new things here so we'll explain them one at a time.</p>
+<pre><code class="language-c">int main() {  
+  return 0;
+}
+</code></pre>
+<blockquote>
+<p>I recommend copying the examples in this chapter into your REPLIT so you can play around with them.</p>
+</blockquote>
+<p>Remember when I said the names of functions didn't affect their behavior? Well, there is one exception. All <code>C</code> programs start working in a special function called <code>main</code>. It has to have this name (with correct capitalization) for your program to work.</p>
+<p>As you can see the <code>main</code> function has no inputs (parameters) and returns an value of type <code>int</code>. The value is used to tell the system the exit status; traditionally a 0 means &quot;everything is fine&quot; and any other value signals to the system there might have been an error. We'll play with this below.</p>
+<blockquote>
+<p>NOTE: From here on we will call function inputs by their proper name, <code>parameters</code>. We will also refer to the output by its proper name, <code>return value</code>.</p>
+</blockquote>
+<p>Make sure the code above is the only thing in your <code>main.c</code> file (delete anything else if you haven't already as shown in the video) then hit the green button. In the console you will see it spit out this.</p>
+<pre><code class="language-sh">&gt; make -s
+&gt; ./main 
+&gt;
+</code></pre>
+<p>The first line, <code>make -s</code>, is the system turning your text file <code>main.c</code> into a <em>executable</em> form the computer can run. This is called <em>compiling</em>. The compilation process will create a new file, in this case called just <code>main</code>. Note that Replit is hiding this newly created file by default, which is why you don't see it in the file listing in the left window; I'll tell you how to see this file later.</p>
+<p>The second line is it running (<em>executing</em>) the <code>main</code> file that was just compiled. (NOTE: the <code>./</code> before <code>main</code> is just telling it to look for that file in the current directory or folder).</p>
+<p>The program does not produce any output to the console, so the program just starts and stops without any other notification.</p>
+<blockquote>
+<p>NOTE <code>main.c</code> is just the default filename given by REPLIT, it could have been anything. It doesn't have any significance or connection to the <code>int main()</code> function above. (However, do not rename this file just yet to test this as we'de need ot make some other changes for the run button to work correctly if you do)</p>
+</blockquote>
+<blockquote>
+<p>Exercise: Rename the <code>main</code> function to something else. Then hit the green run button again. Uh-Oh! The <code>make</code> command which <em>compiles</em> our code had an error. No need to read the error message in detail, just observe that if we don't have a function named <code>main</code> our program cannot <em>compile</em>. Restore the function name to <code>main</code> before proceeding.</p>
+</blockquote>
+<blockquote>
+<p>Exercise: Change <code>main</code>'s return value to an <code>int</code> other than 0. You will see the program compiles and runs to completion OK, but if you look in the console it outputs a red message warning us that the program's <strong>exit status</strong> was not 0. (Note: If the value you return isn't 1..127 the reported exit code may not match).</p>
+</blockquote>
+<h2>Comments</h2>
+<pre><code class="language-c">int main() {  
+  // This is a comment. It has no effect on the program.
+  return 0;
+}
+</code></pre>
+<p>Everything on a line following a <code>//</code> will be ignored by the compiler. Use comments to document what your code is doing.  The more complex your code is the more important this becomes.</p>
+<blockquote>
+<p>Since all the work in this chapter is simple you can just delete the contents of your <code>main.c</code> file and replace them with the new code when moving to the next example or doing the exercises.</p>
+</blockquote>
+<h2>Printing Console</h2>
+<p>The easiest way to send a message to the user is to have it printed out to the console (the rightmost window in REPLIT). Now we will see how to do this. We'll need two new items to do this.</p>
+<p>First, in file listing window click the icon near the top that, when you hover over it with your mouse, says <code>Add File</code>. CLick it and name the file <code>myinclude.c</code>. Now open it and add the following code</p>
+<pre><code class="language-c">int r = 5;
+</code></pre>
+<p>Now click on <code>main.c</code> to open it. and change it to the following.</p>
+<pre><code class="language-c">int main() {
+  #include &quot;myinclude.c&quot;
+  return r;
+}
+</code></pre>
+<p>The <code>#include &quot;myinclude.c&quot;</code> takes the contents of the file called <code>myinclude.c</code>, which we created above, and just inserts it into the file at the location of <code>#include</code>. You can verify this by compiling &amp; running the program (green button as usual). It might seem odd, just looking at the code, that we can <code>return r;</code> without ever defining this variable, but thats what the inserted code from <code>myinclude.c</code> has done for us.</p>
+<p>Most of the time <code>#include</code> appears at teh very top of a code file, and it enables the use of functions defined in other files. To see how this works, now modify your <code>main.c</code> to the following. Then run it.</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+  printf(&quot;Hello&quot;);
+  printf(&quot;Goodbye&quot;);
+  return 0;
+}
+</code></pre>
+<p>Now that you've tried the code above and seen it outputs <code>HelloGoodbye</code> to the console, let's discuss what it is doing.</p>
+<p><code>#include &lt;stdio.h&gt;</code> adds the code from the file <code>stdio.h</code> to <code>main.c</code>. This file isn't in our list of files on the left, rather it is from the <a href="./Terms.html">Standard Library</a> that comes with the version of <code>C</code> we are using here. The compiler knows where to look for this file. <code>stdio</code> is short for &quot;<strong>st</strong>an<strong>d</strong>ard <strong>i</strong>nput/<strong>o</strong>utput&quot;; it has functions that let us print to the screen, read from the user's keyboard, and work with files, and more.</p>
+<p>The <code>printf</code> function lets you print some text to the console. Here it will print <code>Hello</code>. Enter the code above into your Replit and run it to see this printed to the console. What if we wanted our <code>Goodbye</code> to start on a new line after <code>Hello</code>? You <strong>cannot</strong> do it like the code below:</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+  // This will not compile!
+  printf(&quot;Hello
+  &quot;);
+  printf(&quot;Goodbye
+  &quot;);
+  return 0;
+}
+</code></pre>
+<p>This code will not compile <strong>but</strong> if you add the special character <code>\n</code> after <code>Hello</code> (so it becomes <code>&quot;Hello\n&quot;</code>), then the console will jump to the next line and start outputting there whatever is printed next. Try this now.</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+  // This will not compile!
+  printf(&quot;Hello\n&quot;);
+  printf(&quot;Goodbye\n&quot;);
+  return 0;
+}
+</code></pre>
+<blockquote>
+<p>Note: <code>\n</code> is the special <em>newline</em> character. We can't get it by hitting the enter key, we need this <code>\n</code> . Anytime you see something preceded by a backslash (<code>\</code>), expect the slash and what comes after it to do something special. There are other special characters we can't insert with the keyboard and these are usually input with a <code>\</code> followed by something else.</p>
+</blockquote>
+<p><code>printf</code> can do a lot more than just print some static piece of text like <code>&quot;Hello&quot;</code>. The <code>f</code> in <code>printf</code> stands for 'format'; this function will allow you control how the words and numbers are displayed. <code>printf</code> can do a lot, I'll just give a few examples in the code block below. If you want to learn more you can <a href="https://en.cppreference.com/w/c/io/printf">read the documentation</a>, but given the complexity of this function, sometimes the easier option is to search the web for some guidance.</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+  int i = 9;
+  double d = 3.1415926;
+  // %d means print variable 'i' as unsigned integer
+  printf(&quot;A cat has %d lives. \n&quot;, i);
+  // %f means print floating point with decimal
+  printf(&quot;pi is approximately: %f\n&quot;, d);
+  // we can specify we want only 4 digits after teh decimal
+  printf(&quot;pi to the 4th decimal is: %.4f\n&quot;, d);
+  // you can print multiple items at once
+  printf(&quot;%d / %f = %f &quot;, i, d, i/d );
+  return 0;
+}
+</code></pre>
+<p>Every place there is a <code>%</code> tells <code>printf</code> to insert a value there. The letters and numbers immediately after the <code>%</code> specify <em>how</em> it should be printed. The value(s) to be inserted at each of these locations are the values <code>&quot;&quot;</code> quotes. Therefore, the number of <code>%</code> needs to be equal to  number of values after the text.</p>
+<p><code>printf</code> does return a value (the number of characters it printed) but we are not using that value in this example. Like any function we are free to ignore/discard its return value if it is not needed. See below.</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main()
+{
+  int i = 10;
+  int printCount = printf(&quot;The number is %d \n&quot;, i);
+  printf(&quot;That last line had %d characters.&quot;);
+  // we have ignored the return value of the second printf by not assigning it to a variable
+}
+</code></pre>
+<h2>More Types: arrays and strings</h2>
+<p>Before we move to reading user input from the console we'll need to pause to introduce some new types.</p>
+<h3>Array</h3>
+<p>Imagine we want to store many values of a particular type. Up until now, every time we want to work with an <code>int</code> we have created a named <code>int</code> variable then assigned it a value.  If we has dozen or thousands of values to store, it would of course be impractical to have a named variable for each value. In such situations, we instead can create an <strong>array</strong> of <code>int</code>s.</p>
+<p>First read the example code, then the explanation that follows.</p>
+<pre><code class="language-c">int main()
+{
+  // create an int array with 10 elements
+  int intArray[10];
+  // set the first element
+  intArray[0] = 1;
+  // set the last element
+  intArray[9] = 5;
+  // print out the values of first, last elements
+  printf(&quot;The first element is %d&quot;, intArray[0]);
+  printf(&quot;The last element is %d&quot;, intArray[9]);
+}
+</code></pre>
+<p>To create an array, we use the following syntax: the type of the array's <em>elements</em> comes first, then the name, then inside square brackets (<code>[]</code>) is the number of elements the array can hold. The example code above shows how you can create an array and then set and read its elements.</p>
+<p>When we want to accessing a value in the array (to set or read its value), the part in the <code>[]</code> is called the <strong>index</strong>. The 1st element is <code>intArray[0]</code> and goes up from there.</p>
+<p>When you first create an array, the values of the members are not set (initialized) to any particular (or even valid) value. Referring to the example: the values of <code>intArray[1]</code> through <code>intArray[8]</code>, since they are never set, could be anything, and may differ each time you run your problem. It is good practice to not access an array element until it has been set.</p>
+<p>Attempting to read or write an index beyond the last element is an error. Doing so can crash your problem or lead to unexpected behavior. For instance, in the example above you must never assign or read <code>intArray[10]</code> or higher. Accessing elements beyond the end of your array is called a <a href="https://en.wikipedia.org/wiki/Buffer_overflow">buffer overflow</a>.</p>
+<h3>strings</h3>
+<p>We have already used strings above; every time we used <code>printf</code> the part in quotes <code>&quot;...&quot;</code> is a string. For now, think of strings like an array of <code>char</code>s, with the special feature that they always end with the special character <code>\0</code>.</p>
+<p>Put the example below into REPLIT and run it to test these concepts.</p>
+<pre><code class="language-c">int main()
+{
+  char *s = &quot;Hello&quot;;
+  printf( &quot;%s \n&quot;, s);
+
+  printf( &quot;%c \n&quot;, s[0]); // H
+  printf( &quot;%c \n&quot;, s[1]); // e
+  printf( &quot;%c \n&quot;, s[2]); // l
+  printf( &quot;%c \n&quot;, s[3]); // l
+  printf( &quot;%c \n&quot;, s[4]); // o
+  printf( &quot;%d \n&quot;, s[5]); // \0
+}
+</code></pre>
+<p>Don't worry for now about what the type <code>char *</code> means.  We'll cover that in the next chapter. Just notice we can access each element of the string as if it were something like an array of characters.  The <code>printf</code> format specification for a character is <code>%c</code>. Notice that to demonstrate the <code>\0</code> character at the end of th string we tell it to print out like an integer.</p>
+<h2>Reading from the Console</h2>
+<p>Now that you know the basics of strings and arrays you can start to obtain typed user input from the console.</p>
+<p>Copy the code below to your REPLIT, run it. Then proceed to the explanation below.</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+  // prompt the user for input
+  printf(&quot;Type something: &quot;);
+
+  // create an array to hold the user input
+  char buffer[128];
+  // fill the array with what they type
+  fgets(buffer, 128, stdin);
+  // print what they typed back to the user (%s is the format code for a string)
+  printf(&quot;You typed     : %s&quot;,buff);
+
+  return 0;
+}
+</code></pre>
+<p>The <code>fgets</code> function takes three arguments. The third is where it will collect the data from. <code>stdin</code> is short for standard input, which in this case is what appears at the console. The default behavior is that it will stop collecting when use user hits enter. The second argument is the maximum number of characters it will collect from <code>stdin</code>. The first is a character array that will hold the data; storage for this purpose is often called a <strong>buffer</strong>.</p>
+<p>The second argument (size) is important because <code>fgets</code> has no other way to know how big the buffer is. It is very important the value here is no larger than the buffer size for the reasons discussed in the array section above.</p>
+<h2>Summary</h2>
+<p>With this chapter complete you:</p>
+<ul>
+<li>write, compile, and run programs on REPLIT</li>
+<li>write to the console via <code>printf</code></li>
+<li>read user input from the console with <code>fgets</code></li>
+<li>have a basic understanding of what an array is</li>
+</ul>
+<p>In the next section we will see how your programs can alter their behavior conditional on user input.</p>
+<p><a href="./1-Introduction.html">Chapter 1</a>, <a href="./3-Control_Flow.html">Chapter 3</a></p>
+</body>

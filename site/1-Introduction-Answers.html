@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
+
+<link rel="stylesheet" href="base.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/styles/stackoverflow-dark.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    </head>
+<body>
+<h1>Exercise Answers</h1>
+<h2>Exercise 1</h2>
+<blockquote>
+<p>Exercise 1 (written):</p>
+<ol>
+<li>Write a function which returns twice the input</li>
+<li>Write a function which return the negative of its input</li>
+</ol>
+</blockquote>
+<section><eqn><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>2</mn><mo>∗</mo><mi>x</mi></mrow><annotation encoding="application/x-tex"> f(x) = 2 * x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span></span></eqn></section><section><eqn><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mo>−</mo><mi>x</mi></mrow><annotation encoding="application/x-tex"> f(x) = -x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord">−</span><span class="mord mathnormal">x</span></span></span></span></span></eqn></section><h2>Exercise 2</h2>
+<blockquote>
+<p>Exercise 2: What value is output (returned) by <code>PlusOne(-1)</code>?</p>
+</blockquote>
+<p>0</p>
+<h2>Exercise 3:</h2>
+<blockquote>
+<ol>
+<li>Write a <code>C</code> function which takes a input a a single integer parameter returns twice the value.</li>
+</ol>
+</blockquote>
+<pre><code class="language-C">int Twice(int x)
+{
+    return 2 * x;
+}
+</code></pre>
+<blockquote>
+<ol start="2">
+<li>Write a <code>C</code> function which returns takes a single integer input parameter returns twice the value of it.</li>
+</ol>
+</blockquote>
+<pre><code class="language-C">int Negative(int x)
+{
+    return -x;
+}
+</code></pre>
+<blockquote>
+<ol start="3">
+<li>Write a <code>C</code> function which takes two integer parameters and returns the first minus the second</li>
+</ol>
+</blockquote>
+<pre><code class="language-c">int Subtract(int a, int b)
+{
+    return a - b;
+}
+</code></pre>
+<h2>Exercise 4:</h2>
+<blockquote>
+<p>Exercise 4: What is the value returned by <code>AddThreeTimes_v2(11)</code>?</p>
+</blockquote>
+<p>11 + 10 + 10 + 10 = 41</p>
+<h2>Exercise 5:</h2>
+<blockquote>
+<p>Exercise 5: Write a function that takes a <code>double</code> named <code>radius</code> as input and returns a double which is the area of a circle with that radius. (hint: you can approximate <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi></mrow><annotation encoding="application/x-tex">\pi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">π</span></span></span></span></eq> as 3.1412)</p>
+</blockquote>
+<pre><code class="language-c">double CircleArea(double radius)
+{
+    double pi = 3.1412;
+    return pi * radius * radius;
+}
+</code></pre>
+<p>Of course its OK if oyu named your function differently, or maybe didn't have the separate line defining a variable for <code>pi</code>.</p>
+</body>

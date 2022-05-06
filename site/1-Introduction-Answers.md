@@ -18,7 +18,6 @@ $$ f(x) = -x$$
 
 ## Exercise 3:
 
-> Exercise 3:
 >
 > 1) Write a `C` function which takes a input a a single integer parameter returns twice the value.
 

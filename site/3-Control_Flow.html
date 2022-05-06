@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
+
+<link rel="stylesheet" href="base.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/styles/stackoverflow-dark.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    </head>
+<body>
+<p><a href="./2-Writing_Programs.html">Part 2</a></p>
+<h1>3 - Control Flow</h1>
+<p>This section will cover <code>C</code> statements, as well as some simple structures that will allow your program to alter its behavior based on the data it receives. These are the basic building blocks on which all programs are built.</p>
+<h2>Variable Declaration and Assignment</h2>
+<p>So far, our programs have been made of simple statements, each ending in a semicolon.</p>
+<pre><code class="language-c">int main()
+{
+    // variable declaration
+    int i;
+    // assignment statement
+    i = 5;
+    // (re) assignment
+    i = 10;
+    // evaluation + assignment. Evaluate right side first, then update value of i 
+    i = 2 + 3 * 4;
+    // combo statement: declaration and assignment
+    int j = 5;
+}
+</code></pre>
+<p>First we have a <strong>declaration statement</strong>; in this we declare an <code>int</code> variable <code>i</code>. Declaring a variable means settings its type (<code>int</code> in this case) and name.</p>
+<p>After a variable is declared we are free to assign a value to it, and in the second line. An <strong>assignment statement</strong> is one that contains an <code>=</code>. It is ok to assign a new, different value to the same variable later, as in line 3.</p>
+<p>When performing evaluations, <code>C</code> uses the same order-of-operations rules as in normal math.</p>
+<p>Whenever we do an assignment, the part on the right of the <code>=</code> is evaluated (i.e. calculated) first, <strong>then</strong> its value is assigned to the variable on the left side of the <code>=</code>.  <strong>This is important</strong>. While you would never see something like this in math class:</p>
+<section><eqn><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>x</mi><mo>=</mo><mi>x</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex"> x = x + 1 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></span></eqn></section><p>But because of the way assignment works a similar looking statement in <code>C</code> is perfectly sensible:</p>
+<pre><code class="language-c">x = x + 1;
+</code></pre>
+<p>We do the right hand side first: take the current value of <code>x</code> and add one to it. <strong>Then</strong>
+take the result and store it in the variable <code>x</code>.</p>
+<blockquote>
+<p>Exercise 3.1: What does the code below print out?</p>
+</blockquote>
+<pre><code class="language-c">int main()
+{
+    int x = 1;
+    x = x + 2;
+    x = x + 3;
+    x = x + 4;
+    printf(&quot;%d&quot;, x)
+
+    return 0;
+}
+</code></pre>
+<h2>The <code>if</code> statement</h2>
+<p>The <code>if</code> statement lets you execute some section of code conditioned depending on how another expression evaluates. REview these examples:</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+int main()
+{
+    if( 0 )
+    {
+        printf(&quot;This never prints \n&quot;);
+    }
+    if( 1 ) // 1, or anything other than 0
+    {
+        printf(&quot;This always prints \n&quot;);
+    }
+
+    int i = 4;
+    int j = 5;
+
+    if( i &lt; j )
+    {
+        printf(&quot;i &lt; j \n&quot;);
+    }
+    
+    if( i &gt; j )
+    {
+        printf(&quot;i &gt; j \n&quot;);
+    }
+
+    printf( &quot;%d \n&quot;, 1 &lt; 2 ); // prints 1
+    printf( &quot;%d \n&quot;, 1 &gt; 2 ); // prints 0
+    return 0;
+}
+</code></pre>
+<p>If the expression in the <code>if</code>'s <code>(...)</code> evaluates to <code>0</code>, then the next statement, or block of statements inside a <code>{}</code> will <strong>NOT</strong> be executed. If what in the <code>if</code>'s <code>()</code> evaluates to anything other than <code>0</code> then the statement or block following it <strong>will</strong> be executed. As you can see, you can think of 0 as <code>false</code> and anything else as <code>true</code>.</p>
+<blockquote>
+<p>NOTE: As you can see from the above example code. Statements like <code>a &lt; b</code> evaluate to a numerical value; true to 1, and false to 0.</p>
+</blockquote>
+</body>
