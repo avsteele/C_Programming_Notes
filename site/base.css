@@ -9,3 +9,15 @@ margin: 0 auto;
 a{
 color: lightblue;
 }
+
+blockquote
+{
+    border: thick solid green;
+    padding: 1rem;
+}
+
+code
+{
+    /* font-family: 'Courier New', Courier, monospace; */
+    color: orange;
+}

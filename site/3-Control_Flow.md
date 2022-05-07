@@ -69,7 +69,7 @@ int main()
     {
         printf("This never prints \n");
     }
-    if( 1 ) // 1, or anything other than 0
+    if( 1 ) // anything other than 0
     {
         printf("This always prints \n");
     }

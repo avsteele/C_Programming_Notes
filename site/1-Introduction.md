@@ -3,7 +3,7 @@
 
 This book will try to teach you the basics of the `C` programming language. It does not assume you have any programming experience. It is helpful to have taken enough math to know what a function is (<https://en.wikipedia.org/wiki/Function_(mathematics)>).
 
-All the exercises in chapter 1 can be done with pen and paper. You can check your answers [here](./1-Introduction-Answers.md). We'll start programming  on the computer in Chapter 2.
+All the exercises in section 1 can be done with pen and paper. You can check your answers [here](./1-Introduction-Answers.md). We'll start programming  on the computer in Section 2.
 
 ## Functions
 
@@ -191,7 +191,7 @@ char GiveMeAnE()
 }
 ```
 
-Sets of characters can be used to display messages to the user. I'll show you how to do this in the next chapter.
+Sets of characters can be used to display messages to the user. I'll show you how to do this in the next section.
 
 ## Summary
 
@@ -200,4 +200,4 @@ Sets of characters can be used to display messages to the user. I'll show you ho
 * You the names of functions and variables will not affect the behavior
 * Some common types are `int`s like 5, `double`s like `3.1412` and `char`s like `'Z'`
 
-[Index](./index.md), [To Chapter 2](./2-Writing_Programs.md)
+[Index](./index.md), [To Section 2](./2-Writing_Programs.md)

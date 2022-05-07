@@ -21,7 +21,7 @@
 <p>You might not need the video, you can just go to <a href="https://replit.com">REPLIT.com</a>, create an account, then &quot;Make a new Repl&quot; then choose the <code>C</code> template.</p>
 </blockquote>
 <p>After watching the above you should have your <a href="https://replit.com">REPLIT</a> account set up and be able to write some <code>C</code>.</p>
-<p>By the end of this chapter you will be able to write programs that can print out messages to the user and get input from their keyboard.</p>
+<p>By the end of this section you will be able to write programs that can print out messages to the user and get input from their keyboard.</p>
 <h2>The REPLIT interface</h2>
 <p>With your new project open in REPLIT here is what you should see:</p>
 <p>On the left is a window with a list of the files in our project. For now we will just be working with the file it created for us automatically as part of the setup, called <code>main.c</code>.</p>
@@ -35,7 +35,7 @@
 }
 </code></pre>
 <blockquote>
-<p>I recommend copying the examples in this chapter into your REPLIT so you can play around with them.</p>
+<p>I recommend copying the examples in this section into your REPLIT so you can play around with them.</p>
 </blockquote>
 <p>Remember when I said the names of functions didn't affect their behavior? Well, there is one exception. All <code>C</code> programs start working in a special function called <code>main</code>. It has to have this name (with correct capitalization) for your program to work.</p>
 <p>As you can see the <code>main</code> function has no inputs (parameters) and returns an value of type <code>int</code>. The value is used to tell the system the exit status; traditionally a 0 means &quot;everything is fine&quot; and any other value signals to the system there might have been an error. We'll play with this below.</p>
@@ -67,7 +67,7 @@
 </code></pre>
 <p>Everything on a line following a <code>//</code> will be ignored by the compiler. Use comments to document what your code is doing.  The more complex your code is the more important this becomes.</p>
 <blockquote>
-<p>Since all the work in this chapter is simple you can just delete the contents of your <code>main.c</code> file and replace them with the new code when moving to the next example or doing the exercises.</p>
+<p>Since all the work in this section is simple you can just delete the contents of your <code>main.c</code> file and replace them with the new code when moving to the next example or doing the exercises.</p>
 </blockquote>
 <h2>Printing Console</h2>
 <p>The easiest way to send a message to the user is to have it printed out to the console (the rightmost window in REPLIT). Now we will see how to do this. We'll need two new items to do this.</p>
@@ -184,7 +184,7 @@ int main()
   printf( &quot;%d \n&quot;, s[5]); // \0
 }
 </code></pre>
-<p>Don't worry for now about what the type <code>char *</code> means.  We'll cover that in the next chapter. Just notice we can access each element of the string as if it were something like an array of characters.  The <code>printf</code> format specification for a character is <code>%c</code>. Notice that to demonstrate the <code>\0</code> character at the end of th string we tell it to print out like an integer.</p>
+<p>Don't worry for now about what the type <code>char *</code> means.  We'll cover that in the next section. Just notice we can access each element of the string as if it were something like an array of characters.  The <code>printf</code> format specification for a character is <code>%c</code>. Notice that to demonstrate the <code>\0</code> character at the end of th string we tell it to print out like an integer.</p>
 <h2>Reading from the Console</h2>
 <p>Now that you know the basics of strings and arrays you can start to obtain typed user input from the console.</p>
 <p>Copy the code below to your REPLIT, run it. Then proceed to the explanation below.</p>
@@ -207,7 +207,7 @@ int main() {
 <p>The <code>fgets</code> function takes three arguments. The third is where it will collect the data from. <code>stdin</code> is short for standard input, which in this case is what appears at the console. The default behavior is that it will stop collecting when use user hits enter. The second argument is the maximum number of characters it will collect from <code>stdin</code>. The first is a character array that will hold the data; storage for this purpose is often called a <strong>buffer</strong>.</p>
 <p>The second argument (size) is important because <code>fgets</code> has no other way to know how big the buffer is. It is very important the value here is no larger than the buffer size for the reasons discussed in the array section above.</p>
 <h2>Summary</h2>
-<p>With this chapter complete you:</p>
+<p>With this section complete you:</p>
 <ul>
 <li>write, compile, and run programs on REPLIT</li>
 <li>write to the console via <code>printf</code></li>
@@ -215,5 +215,5 @@ int main() {
 <li>have a basic understanding of what an array is</li>
 </ul>
 <p>In the next section we will see how your programs can alter their behavior conditional on user input.</p>
-<p><a href="./1-Introduction.html">Chapter 1</a>, <a href="./3-Control_Flow.html">Chapter 3</a></p>
+<p><a href="./1-Introduction.html">Section 1</a>, <a href="./3-Control_Flow.html">Section 3</a></p>
 </body>

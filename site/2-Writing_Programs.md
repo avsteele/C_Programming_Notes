@@ -10,7 +10,7 @@ Time to write and run your first `C` program on the computer. We are going to ge
 
 After watching the above you should have your [REPLIT](https://replit.com) account set up and be able to write some `C`.
 
-By the end of this chapter you will be able to write programs that can print out messages to the user and get input from their keyboard.
+By the end of this section you will be able to write programs that can print out messages to the user and get input from their keyboard.
 
 ## The REPLIT interface
 
@@ -34,7 +34,7 @@ int main() {
 }
 ```
 
-> I recommend copying the examples in this chapter into your REPLIT so you can play around with them.
+> I recommend copying the examples in this section into your REPLIT so you can play around with them.
 
 Remember when I said the names of functions didn't affect their behavior? Well, there is one exception. All `C` programs start working in a special function called `main`. It has to have this name (with correct capitalization) for your program to work.
 
@@ -73,7 +73,7 @@ int main() {
 
 Everything on a line following a `//` will be ignored by the compiler. Use comments to document what your code is doing.  The more complex your code is the more important this becomes.
 
-> Since all the work in this chapter is simple you can just delete the contents of your `main.c` file and replace them with the new code when moving to the next example or doing the exercises.
+> Since all the work in this section is simple you can just delete the contents of your `main.c` file and replace them with the new code when moving to the next example or doing the exercises.
 
 
 ## Printing Console
@@ -233,7 +233,7 @@ int main()
 }
 ```
 
-Don't worry for now about what the type `char *` means.  We'll cover that in the next chapter. Just notice we can access each element of the string as if it were something like an array of characters.  The `printf` format specification for a character is `%c`. Notice that to demonstrate the `\0` character at the end of th string we tell it to print out like an integer.
+Don't worry for now about what the type `char *` means.  We'll cover that in the next section. Just notice we can access each element of the string as if it were something like an array of characters.  The `printf` format specification for a character is `%c`. Notice that to demonstrate the `\0` character at the end of th string we tell it to print out like an integer.
 
 ## Reading from the Console
 
@@ -265,7 +265,7 @@ The second argument (size) is important because `fgets` has no other way to know
 
 ## Summary
 
-With this chapter complete you:
+With this section complete you:
 
 * write, compile, and run programs on REPLIT
 * write to the console via `printf`
@@ -274,4 +274,4 @@ With this chapter complete you:
 
 In the next section we will see how your programs can alter their behavior conditional on user input.
 
-[Chapter 1](./1-Introduction.md), [Chapter 3](./3-Control_Flow.md)
+[Section 1](./1-Introduction.md), [Section 3](./3-Control_Flow.md)
