@@ -2,9 +2,9 @@
 
 # 2 - Writing `C` Programs
 
-Time to write and run your first `C` program on the computer. We are going to get set up so you can code right in your web browser.
+Time to write and run your first `C` program on the computer. We are going to get set up so you can code right in your web browser using the website <reaplit.com>
 
-> TODO: Link to video showing how to set up at replit. 
+> TODO: Link to video showing how to set up at replit.com 
 
 > You might not need the video, you can just go to [REPLIT.com](https://replit.com), create an account, then "Make a new Repl" then choose the `C` template.
 
@@ -26,19 +26,22 @@ If you click the green button at the top you can see some things output in Conso
 
 ## Exploring your first program
 
-Lets return to the code in `main.c`. There are some new things here so we'll explain them one at a time.
+Lets return to the code in `main.c`. Delete everything in this file except for the code below. 
 
 ```c
-int main() {  
+int main() 
+{  
   return 0;
 }
 ```
 
-> I recommend copying the examples in this section into your REPLIT so you can play around with them.
+There are some new things here so we'll explain them one at a time.
 
-Remember when I said the names of functions didn't affect their behavior? Well, there is one exception. All `C` programs start working in a special function called `main`. It has to have this name (with correct capitalization) for your program to work.
+> I recommend copying and pasting the examples in this section into your REPLIT `main.c` file so you can play around with them.
 
-As you can see the `main` function has no inputs (parameters) and returns an value of type `int`. The value is used to tell the system the exit status; traditionally a 0 means "everything is fine" and any other value signals to the system there might have been an error. We'll play with this below.
+Remember when I said the names of functions didn't affect their behavior? Well, there are one or two ne exception. All `C` programs start working in a special function called `main`. It has to have this name (with correct capitalization) for your program to work.
+
+As you can see the `main` function has no inputs (parameters) and returns an value of type `int`. The return value is used to tell the user or system that ran the program its *exit status*; traditionally a 0 means "everything is fine" and any other value signals to the system there might have been an error. We'll play with this below.
 
 > NOTE: From here on we will call function inputs by their proper name, `parameters`. We will also refer to the output by its proper name, `return value`.
 
@@ -56,29 +59,30 @@ The second line is it running (*executing*) the `main` file that was just compil
 
 The program does not produce any output to the console, so the program just starts and stops without any other notification.
 
-> NOTE `main.c` is just the default filename given by REPLIT, it could have been anything. It doesn't have any significance or connection to the `int main()` function above. (However, do not rename this file just yet to test this as we'de need ot make some other changes for the run button to work correctly if you do)
+> NOTE `main.c` is just the default filename given by REPLIT, it could have been anything. It doesn't have any significance or connection to the `int main()` function above. (However, do not rename this file just yet to test this; if you do we would need to make some other changes for the run button to work correctly if you do)
 
-> Exercise: Rename the `main` function to something else. Then hit the green run button again. Uh-Oh! The `make` command which *compiles* our code had an error. No need to read the error message in detail, just observe that if we don't have a function named `main` our program cannot *compile*. Restore the function name to `main` before proceeding.
+> Exercise: Rename the `int main()` function to something else. Then hit the green run button again. Uh-Oh! The `make` command which *compiles* our code had an error. No need to read the error message in detail, just observe that if we don't have a function named `main` our program cannot *compile*. Restore the function name to `main` before proceeding.
 
-> Exercise: Change `main`'s return value to an `int` other than 0. You will see the program compiles and runs to completion OK, but if you look in the console it outputs a red message warning us that the program's **exit status** was not 0. (Note: If the value you return isn't 1..127 the reported exit code may not match).
+> Exercise: Change `main` and have it return a value other than 0. You will see the program compiles and runs to completion OK, but if you look in the console it outputs a red message warning us that the program's **exit status** was not 0. (Note: Don't worry if the exit status # does not match the value you returned).
 
 ## Comments
 
 ```c
-int main() {  
+int main() 
+{  
   // This is a comment. It has no effect on the program.
   return 0;
 }
 ```
 
-Everything on a line following a `//` will be ignored by the compiler. Use comments to document what your code is doing.  The more complex your code is the more important this becomes.
+Everything on a line after a `//` (double forward slash) will be **ignored** by the compiler. Use comments to explain what your code is doing. The more complex your code is the more important this becomes.
 
 > Since all the work in this section is simple you can just delete the contents of your `main.c` file and replace them with the new code when moving to the next example or doing the exercises.
 
 
-## Printing Console
+## Printing to the Console
 
-The easiest way to send a message to the user is to have it printed out to the console (the rightmost window in REPLIT). Now we will see how to do this. We'll need two new items to do this. 
+The easiest way to send a message to the user is to have it printed out to the console (the rightmost window in REPLIT). Now we will see how to do this. First, we'll need two new concepts. 
 
 First, in file listing window click the icon near the top that, when you hover over it with your mouse, says `Add File`. CLick it and name the file `myinclude.c`. Now open it and add the following code
 
@@ -89,20 +93,22 @@ int r = 5;
 Now click on `main.c` to open it. and change it to the following.
 
 ```c
-int main() {
+int main() 
+{
   #include "myinclude.c"
   return r;
 }
 ```
 
-The `#include "myinclude.c"` takes the contents of the file called `myinclude.c`, which we created above, and just inserts it into the file at the location of `#include`. You can verify this by compiling & running the program (green button as usual). It might seem odd, just looking at the code, that we can `return r;` without ever defining this variable, but thats what the inserted code from `myinclude.c` has done for us.
+The `#include "myinclude.c"` takes the contents of the file called `myinclude.c`, which we created above, and just inserts it into the file at the location of `#include`. You can verify this by compiling & running the program (green button as usual). It might seem odd, just looking at the code, that we can `return r;` without ever defining this variable. That is what the inserted code from `myinclude.c` has done for us.
 
-Most of the time `#include` appears at teh very top of a code file, and it enables the use of functions defined in other files. To see how this works, now modify your `main.c` to the following. Then run it.
+Most of the time `#include` appears at teh very top of a code file, and it enables the use of functions defined in other files. To see how this works, now modify your `main.c` to look like the code below, then run it.
 
 ```c
 #include <stdio.h>
 
-int main() {
+int main() 
+{
   printf("Hello");
   printf("Goodbye");
   return 0;
@@ -113,13 +119,14 @@ Now that you've tried the code above and seen it outputs `HelloGoodbye` to the c
 
 `#include <stdio.h>` adds the code from the file `stdio.h` to `main.c`. This file isn't in our list of files on the left, rather it is from the [Standard Library](./Terms.md) that comes with the version of `C` we are using here. The compiler knows where to look for this file. `stdio` is short for "**st**an**d**ard **i**nput/**o**utput"; it has functions that let us print to the screen, read from the user's keyboard, and work with files, and more.
 
-The `printf` function lets you print some text to the console. Here it will print `Hello`. Enter the code above into your Replit and run it to see this printed to the console. What if we wanted our `Goodbye` to start on a new line after `Hello`? You **cannot** do it like the code below:
+By `#include`'ing this file, we can use a new funciton, `printf` which lets you print some text to the console. Here it will print `Hello`. Enter the code above into your Replit and run it to see this printed to the console. What if we wanted our `Goodbye` to start on a new line after `Hello`? You **cannot** do it like the code below:
 
 ```c
 #include <stdio.h>
 
-int main() {
-  // This will not compile!
+int main() 
+{
+  // BAD CODE: This will not compile!
   printf("Hello
   ");
   printf("Goodbye
@@ -128,13 +135,13 @@ int main() {
 }
 ```
 
-This code will not compile **but** if you add the special character `\n` after `Hello` (so it becomes `"Hello\n"`), then the console will jump to the next line and start outputting there whatever is printed next. Try this now.
+This code will not compile **but** if instead you add the special character `\n` after `Hello` (so it becomes `"Hello\n"`), then the console will jump to the next line and start outputting there whatever is printed next. Try this now.
 
 ```c
 #include <stdio.h>
 
-int main() {
-  // This will not compile!
+int main() 
+{
   printf("Hello\n");
   printf("Goodbye\n");
   return 0;
@@ -148,14 +155,15 @@ int main() {
 ```c
 #include <stdio.h>
 
-int main() {
+int main() 
+{
   int i = 9;
   double d = 3.1415926;
-  // %d means print variable 'i' as unsigned integer
+  // %d means print variable 'i' as an unsigned integer
   printf("A cat has %d lives. \n", i);
   // %f means print floating point with decimal
   printf("pi is approximately: %f\n", d);
-  // we can specify we want only 4 digits after teh decimal
+  // we can specify we want only 4 digits after the decimal
   printf("pi to the 4th decimal is: %.4f\n", d);
   // you can print multiple items at once
   printf("%d / %f = %f ", i, d, i/d );
@@ -174,7 +182,7 @@ int main()
 {
   int i = 10;
   int printCount = printf("The number is %d \n", i);
-  printf("That last line had %d characters.");
+  printf("That last line had %d characters.", printCount);
   // we have ignored the return value of the second printf by not assigning it to a variable
 }
 ```
@@ -185,7 +193,7 @@ Before we move to reading user input from the console we'll need to pause to int
 
 ### Array
 
-Imagine we want to store many values of a particular type. Up until now, every time we want to work with an `int` we have created a named `int` variable then assigned it a value.  If we has dozen or thousands of values to store, it would of course be impractical to have a named variable for each value. In such situations, we instead can create an **array** of `int`s.
+Imagine we want to store many values of a particular type. Up until now, every time we want to work with an `int` we have created a named `int` variable then assigned it a value.  What if we has dozen or thousands of values to store? It would of course be impractical to have a named variable for each value. In such situations, we instead can create an **array** of `int`s.
 
 First read the example code, then the explanation that follows.
 
@@ -208,13 +216,13 @@ To create an array, we use the following syntax: the type of the array's *elemen
 
 When we want to accessing a value in the array (to set or read its value), the part in the `[]` is called the **index**. The 1st element is `intArray[0]` and goes up from there.
 
-When you first create an array, the values of the members are not set (initialized) to any particular (or even valid) value. Referring to the example: the values of `intArray[1]` through `intArray[8]`, since they are never set, could be anything, and may differ each time you run your problem. It is good practice to not access an array element until it has been set.
+When you first create an array, the values of the members are not set (initialized) to any particular (or even valid) value. Returning to the example now: the values of `intArray[1]` through `intArray[8]`, since they are never set, could be anything, and may differ each time you run your problem. For this reason, there is no reason to read an array element before it has been set.
 
-Attempting to read or write an index beyond the last element is an error. Doing so can crash your problem or lead to unexpected behavior. For instance, in the example above you must never assign or read `intArray[10]` or higher. Accessing elements beyond the end of your array is called a [buffer overflow](https://en.wikipedia.org/wiki/Buffer_overflow).
+Attempting to read or write an index beyond the last element is an error. Doing so can crash your problem or lead to unexpected behavior. For instance, in the example above you must never assign (or read) `intArray[10]` or higher. Writing to elements beyond the end of your array is called a [buffer overflow](https://en.wikipedia.org/wiki/Buffer_overflow).
 
-### strings
+### `string`
 
-We have already used strings above; every time we used `printf` the part in quotes `"..."` is a string. For now, think of strings like an array of `char`s, with the special feature that they always end with the special character `\0`.
+We have already used `string`s above; every time we used `printf` the part in quotes `"..."` is a string. For now, think of strings like an array of `char`s, with the special feature that they always end with the special character `\0`.
 
 Put the example below into REPLIT and run it to test these concepts.
 
@@ -239,39 +247,39 @@ Don't worry for now about what the type `char *` means.  We'll cover that in the
 
 Now that you know the basics of strings and arrays you can start to obtain typed user input from the console.
 
-Copy the code below to your REPLIT, run it. Then proceed to the explanation below.
+Copy the code below to your REPLIT, and run it. Then proceed to the explanation below.
 
 ```c
 #include <stdio.h>
 
 int main() {
   // prompt the user for input
-  printf("Type something: ");
+  printf("Type something then hit enter: ");
 
   // create an array to hold the user input
   char buffer[128];
   // fill the array with what they type
   fgets(buffer, 128, stdin);
   // print what they typed back to the user (%s is the format code for a string)
-  printf("You typed     : %s",buff);
+  printf("You typed: %s", buffer);
 
   return 0;
 }
 ```
 
-The `fgets` function takes three arguments. The third is where it will collect the data from. `stdin` is short for standard input, which in this case is what appears at the console. The default behavior is that it will stop collecting when use user hits enter. The second argument is the maximum number of characters it will collect from `stdin`. The first is a character array that will hold the data; storage for this purpose is often called a **buffer**.
+The `fgets` function takes three arguments. The third is where it will look for data. `stdin` is short for standard input, which in this case is what appears at the console. The default behavior is that it will stop collecting when use user hits enter. The second argument is the maximum number of characters it will collect from `stdin`. The first argument is a character array that will hold the data; storage for this purpose is often called a **buffer**.
 
-The second argument (size) is important because `fgets` has no other way to know how big the buffer is. It is very important the value here is no larger than the buffer size for the reasons discussed in the array section above.
+The second argument (size) is important because `fgets` has no other way to know how big the buffer is. It is very important the value here is no larger than the buffer size in order to avoid a buffer overflow as discussed above.
 
 ## Summary
 
-With this section complete you:
+With this section complete you can:
 
 * write, compile, and run programs on REPLIT
 * write to the console via `printf`
 * read user input from the console with `fgets`
-* have a basic understanding of what an array is
+* understanding he basic of arrays
 
-In the next section we will see how your programs can alter their behavior conditional on user input.
+In the next section we will see how your programs can alter their behavior based on user input.
 
 [Section 1](./1-Introduction.md), [Section 3](./3-Control_Flow.md)

@@ -1,12 +1,16 @@
 # Terms
 
-call
+## block
 
-parameter
+any set of statements enclosed by a pair of `{}` (curly brackets).
 
-statement
+## call
 
-type
+## parameter
+
+## statement
+
+## type
 
 ## return type
 

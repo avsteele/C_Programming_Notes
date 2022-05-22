@@ -11,7 +11,7 @@
     <script>hljs.highlightAll();</script>
     </head>
 <body>
-<p><a href="./2-Writing_Programs.html">Part 2</a></p>
+<p><a href="./2-Writing_Programs.html">Back</a></p>
 <h1>3 - Control Flow</h1>
 <p>This section will cover <code>C</code> statements, as well as some simple structures that will allow your program to alter its behavior based on the data it receives. These are the basic building blocks on which all programs are built.</p>
 <h2>Variable Declaration and Assignment</h2>
@@ -33,12 +33,12 @@
 <p>First we have a <strong>declaration statement</strong>; in this we declare an <code>int</code> variable <code>i</code>. Declaring a variable means settings its type (<code>int</code> in this case) and name.</p>
 <p>After a variable is declared we are free to assign a value to it, and in the second line. An <strong>assignment statement</strong> is one that contains an <code>=</code>. It is ok to assign a new, different value to the same variable later, as in line 3.</p>
 <p>When performing evaluations, <code>C</code> uses the same order-of-operations rules as in normal math.</p>
-<p>Whenever we do an assignment, the part on the right of the <code>=</code> is evaluated (i.e. calculated) first, <strong>then</strong> its value is assigned to the variable on the left side of the <code>=</code>.  <strong>This is important</strong>. While you would never see something like this in math class:</p>
-<section><eqn><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>x</mi><mo>=</mo><mi>x</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex"> x = x + 1 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></span></eqn></section><p>But because of the way assignment works a similar looking statement in <code>C</code> is perfectly sensible:</p>
+<p>Whenever we do an assignment, the part on the right of the <code>=</code> is evaluated (i.e. calculated) first, <strong>then</strong> its value is assigned to the variable on the left side of the <code>=</code>.  <strong>This is important</strong>. You would never see something like this in math class:</p>
+<section><eqn><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>x</mi><mo>=</mo><mi>x</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex"> x = x + 1 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></span></eqn></section><p>but because of the way assignment works in <code>C</code> a similar looking statement in <code>C</code> is perfectly sensible:</p>
 <pre><code class="language-c">x = x + 1;
 </code></pre>
 <p>We do the right hand side first: take the current value of <code>x</code> and add one to it. <strong>Then</strong>
-take the result and store it in the variable <code>x</code>.</p>
+take the result and store it as the new value of the variable <code>x</code>.</p>
 <blockquote>
 <p>Exercise 3.1: What does the code below print out?</p>
 </blockquote>
@@ -54,7 +54,7 @@ take the result and store it in the variable <code>x</code>.</p>
 }
 </code></pre>
 <h2>The <code>if</code> statement</h2>
-<p>The <code>if</code> statement lets you execute some section of code conditioned depending on how another expression evaluates. REview these examples:</p>
+<p>The <code>if</code> statement lets you execute some section of code conditioned (depending) on how another expression evaluates. Review these examples:</p>
 <pre><code class="language-c">#include &lt;stdio.h&gt;
 int main()
 {
@@ -62,7 +62,7 @@ int main()
     {
         printf(&quot;This never prints \n&quot;);
     }
-    if( 1 ) // 1, or anything other than 0
+    if( 1 ) // '1' can be anything other than 0
     {
         printf(&quot;This always prints \n&quot;);
     }
@@ -85,8 +85,150 @@ int main()
     return 0;
 }
 </code></pre>
-<p>If the expression in the <code>if</code>'s <code>(...)</code> evaluates to <code>0</code>, then the next statement, or block of statements inside a <code>{}</code> will <strong>NOT</strong> be executed. If what in the <code>if</code>'s <code>()</code> evaluates to anything other than <code>0</code> then the statement or block following it <strong>will</strong> be executed. As you can see, you can think of 0 as <code>false</code> and anything else as <code>true</code>.</p>
+<p>If the expression in the <code>if</code>'s <code>(...)</code> evaluates to <code>0</code> (false, basically), then the next block of statements inside a <code>{}</code> will <strong>NOT</strong> be executed. But if what's in the <code>if</code>'s <code>()</code> evaluates to anything other than <code>0</code> then the statement or block following it <strong>will</strong> be executed.</p>
 <blockquote>
-<p>NOTE: As you can see from the above example code. Statements like <code>a &lt; b</code> evaluate to a numerical value; true to 1, and false to 0.</p>
+<p>NOTE: As you can see from the above example code, statements like <code>a &lt; b</code> evaluate to a numerical value; true for 1, and false to 0.</p>
 </blockquote>
+<h2>Variable Scope</h2>
+<p>If we have a variable inside a function, it's value is available only <em>inside</em> that function. Example:</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+void Variables()
+{
+    int i = 1;
+    double d = 1.2345;    
+}
+
+int main()
+{
+    int i = 9;
+    double d = 6.7;
+    Variables();
+    printf(&quot;%d, %f \n&quot;, i, d);
+}
+</code></pre>
+<p>This code will print out <code>9</code>, and <code>6.7</code>. The fact that we have another function which contains variables with the same name has no impact on what happens in <code>main()</code>.</p>
+<p>This is an example of what is caled <strong>scope</strong>. One scoping rule is that we can only access variables inside our own set of <code>{ }</code>. If the variable was delcared inside a different set of <code>{ }</code> we cannot see it. In other words, the code below will not compile.</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+void test()
+{
+    int i = 10;
+}
+
+int main()
+{
+    // BAD CODE: will not compile!!
+    print(&quot;%d&quot;, i);
+}
+</code></pre>
+<p>However, using a variable delcaring in an <strong>enclosing scope</strong> is OK. Example:</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main()
+{
+    char * message = &quot;Hello&quot;
+    int i = 5;
+    if(i&gt;0)
+    {
+        printf(&quot;%s&quot;, message)
+    }
+}
+</code></pre>
+<p>Here the variable <code>message</code> wasn't declared in the set of <code>{}</code> where it is used, but it is declared inside a set of <code>{}</code> that <strong>encloses</strong> where it is used, so we can see it at the <code>printf</code> statement.</p>
+<p>There's a lot more to say on scope rules, but this is enough to get us going.</p>
+<h2>Global Variables</h2>
+<p>So far, all of our variables have been inside of functions, but this is not required.</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+char * message = &quot;Hello!&quot;;
+
+void Print3Times()
+{
+    printf(&quot;%s %s %s\n&quot;, message, message, message);
+}
+
+int main() 
+{
+  printf(&quot;%s\n&quot;, message);
+  Print3Times();
+  return 0;
+}
+</code></pre>
+<p>Here a string is delcared outside the two functions. Its value is available everywhere in the program. This is called a <strong>global variable</strong>.</p>
+<h2><code>while</code> statement</h2>
+<p>The <code>while</code> statement tells the program to run a <a href="./Terms">block</a> of statements repeatedly until a certain conditional (as in <code>if</code>) is false. Example:</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main()
+{
+    int timesToPrint = 5;
+    int printedSoFar = 0;
+    while(printedSoFar &lt; timesToPrint)
+    {
+        printf(&quot;%s&quot;, &quot;Hello&quot;);
+        printedSoFar = printedSoFar + 1;
+    }
+}
+</code></pre>
+<p>In the above, first the program checks if <code>printedSoFar &lt; timesToPrint</code> is true. If so, it runs whats inside the <code>{}</code> that follows. When its done, it checks if <code>printedSoFar &lt; timesToPrint</code> again, and if still true it runs what is in <code>{}</code> again. It will continue do this for as long as the conditional is true. In the example, we increase the variable <code>printedSoFar</code> by 1 each loop. So the conitional will be false after the loop has run 5 times. In other words, this loop will print <code>Hello</code> 5 times. By changing the value of <code>timesToPrint</code> we can have it do this 10, 100, 1000 or however many times we wish.</p>
+<p>BE CAREFUL! If you make a mistake with a <code>while</code> statement it is easy to cause your program to get into an infinite loop!</p>
+<p>If this happens you'll need to force the program to stop.  In REPLIT the <code>run</code> button  becomes a <code>stop</code> button while the program is running. Click this to halt your program.</p>
+<p>Another example: suppose we want to find the sum of all the integers from 0 to some integer <code>n</code>. We could write this using a <code>while</code> loop like so.</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main()
+{
+    int n = 5;
+
+    int sum = 0;
+    int currentNumber = 1;
+    // NOTE: &lt;= means 'less than or equal to'
+    while(currentNumber &lt;= n)
+    {
+        sum = sum + currentNumber;
+        currentNumber = currentNumber + 1;
+    }
+
+    printf(&quot;%d \n&quot;, sum);
+}
+</code></pre>
+<p>Be sure to paste this into your REPLIT and run it. Spend some time re-reading and playing around with it to make sure you understand what it is doing.</p>
+<h2>The <code>for</code> statement</h2>
+<p>As it turns out, the kind of <code>while</code> loop we just created occurs quite often: <code>run a loop until a condition is met</code> + <code>change a variable each time the loop completes</code>.</p>
+<p>In these sitautions we can we can make our <code>sumToN</code> function more compact using the <code>for</code> statement.</p>
+<p>But basically it sets up a situation where a statement (or set of statements inside a <code>{}</code>) will run over and over, until a certain conditional evaluates to false.</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() 
+{
+  int n= 5;
+  int sum = 0;
+  for(int i=0; i&lt;=n; i=i+1)
+  {
+      sum = sum + i;
+  }
+
+  printf(&quot;%d \n&quot;, sum);
+}
+</code></pre>
+<p>The <code>for</code> statement is a little strange looking; we will step through it piece by piece below.</p>
+<p>There are three statements inside the <code>for()</code>, each ending with a <code>;</code>.  The first (<code>int i=0</code>)runs just once, when the loops starts. It usually decalres a new variable and sets its initial value. The second statement (<code>i&lt;=n</code>) is a test that runs before each loop. If true, the loops runs, if not, the loop exits. The last part (<code>i=i+1</code>) is a statement that runs once each time the loop ends.</p>
+<p>So here we delcare a variable(a 'loop variable' <code>i</code>), then we see if it is less than <code>5</code>. It is, so we run the code block <code>{..}</code> that follows. Each time the block completes, <code>i</code> is increased by <code>1</code>. Then the conditional is checked again, and so on.</p>
+<h2>Summary</h2>
+<p>You are off to a great start! In this chapter you learned</p>
+<ul>
+<li>variable scope basics</li>
+<li><code>if</code> statement</li>
+<li><code>while</code> statement</li>
+<li><code>for</code> statement</li>
+</ul>
+<p>This guide just barely scrathces the surface of <code>C</code>. The aim hasbeen to give you a foundation what you can build on as you read other tutorials and continue to learn programming. Specd some time revewing the conecepts above. Take on some of the programming challenges listed below, then continue learning using some of other resources in books and on the web I've linked to below.</p>
+<p><a href="./Resources.html">Additional Resources</a></p>
+<h3>Challenges</h3>
+<p>Try to write the following programs:</p>
+<ol>
+<li>let the user input some text, then print out each letter of thier input on a new line.</li>
+<li>let the user inptu some text, then count the number of <code>e</code>'s in thier input and print this put.</li>
+</ol>
 </body>

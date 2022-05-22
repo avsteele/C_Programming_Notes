@@ -19,7 +19,7 @@ It takes some input number, $x$, and returns some other number, $x+1$. Using the
 
 $$PlusOne(x) = x + 1$$
 
-But its still the same function.
+But it's still the same function.
 
 Programming in `C` or any other language can mostly be thought of as giving the computer some input and having it calculate (compute) some output. The input can come from the user typing at their keyboard, using their mouse, or using reading some file on their computer or downloaded from the internet.
 
@@ -49,9 +49,9 @@ After the name, in the `(   )` parentheses we put the function *inputs*. There c
 
 Thats all for line 1!
 
-Next we enclose the part of the function where the *work* happens with `{ }` curly brackets. These brackets don't *do* anything except tell the computer where the start and end of the function is.
+Next we enclose the part of the function where the *work* happens with `{ }` curly brackets. These brackets don't *do* anything except tell the computer where the start and end of the function is. Stuff enclodes by the `{}` is called a [block](./Terms.md)
 
-Inside the brackets are [statement](./Terms.md)s. Statements tell the computer how to product the output from the inputs. Statements always end with a `;` (semicolon). The `;` does not *do* anything. It just helps the computer to know the statement is over. This function has a single `return` statement. The statement:
+Inside the brackets are [statement](./Terms.md)s. The functions statment tell the computer how to produce the output from the inputs. Each statement ends with a `;` (semicolon). The `;` does not *do* anything. It just helps the computer to read (aka 'parse') your code. This function has a single `return` statement. The statement:
 
 ```c
     return <whatever>;
@@ -59,17 +59,17 @@ Inside the brackets are [statement](./Terms.md)s. Statements tell the computer h
 
 means whatever follows `return` is the output.
 
-Because we told the computer that `PlusOne` will output an `int`  in line 1, that has to be the type of data that follows the word `return`.  If we tried to `return x+0.1` that would be an error, because if x is an integer then `x+0.1` is not an integer (not a whole number). If we forget a return statement that is also an error. I'll explain how the computer will let you know you've made an error later.
+Because we told the computer that `PlusOne` will output an `int` in line 1, that must be the type of data that follows the word `return`.  If we tried to `return x+0.1` that would be an error, because if x is an integer then `x+0.1` is not an integer (not a whole number). If we forget a `return` statement that is also an error (NOTE: your program *may* run but it will give nonsense results). I'll explain how the computer will let you know you've made an error later.
 
-You may also notice we put several spaces before the `return` statement (it is *indented*). These are optional, but most people think it makes it easier to read. The placement of `{}` on lines by themselves is optional too.  The program above can as easily be written
+You may also notice we put several spaces before the `return` statement (it is *indented*). These spaces are optional, but most people think it makes it easier to read. The placement of `{}` on lines by themselves is optional too. So, the function above could have been written:
 
 ```c
 int PlusOne(int x){return x+1;}
 ```
 
-but most people find this harder to read. Another similar convention you will see in almost all `C` code to make it easier to read is to indent a few spaces when we are inside a `{  }`.
+but most people find this harder to read. Almost all `C` code will indent a few spaces when inside a `{  }`.
 
-THe technical term for *using* a function is [call](./Terms.md)ing the function. To call our function above we would write `PlusOne(5)`.  Any place you write `PlusOne(5)` in our program it is basically the same as inserting a `6`.
+The technical term for *using* a function is [call](./Terms.md)ing the function. To call our function above we would write `PlusOne(5)`.  Any place you write `PlusOne(5)` in our program it is basically the same as inserting a `6`.
 
 > Exercise 2: What value is output (returned) by `PlusOne(-1)`?
 
@@ -97,6 +97,16 @@ int Sum(int input1, int input2)
 
 you just separate each input with a comma.
 
+Some functions will have no *outputs*:
+```c
+void DoNothing()
+{
+
+}
+```
+
+Why would we use a function with no outputs?  We'll come back to this in [Chapter3](./3-Control_Flow-Answers.md)
+
 > Exercise 3:
 >
 > 1) Write a `C` function which takes a input a a single integer parameter returns twice the value.
@@ -107,7 +117,7 @@ you just separate each input with a comma.
 
 ## Variables
 
-Lets look at another function
+Let's look at another function
 
 ```c
 int AddThreeTimes(int x)
@@ -126,7 +136,7 @@ int AddThreeTimes(int x)
 }
 ```
 
-Now the function has one extra statement on line 3 that defines a new variable called `addMe`. With this line we are telling the computer, `I want to store an integer value in the name addMe`. Now later if we want to use that value we can write `addMe` and will get the same result as putting that value there.
+Now the function has one extra statement on line 3 that **defines** a new variable called `addMe`. With this line we are telling the computer, `I want to store an integer value in the name addMe, set it to 5 initally`. Later if we want to use that value we can write `addMe` and it will be the same same result as putting the value there.
 
 The rules for valid names of variables are basically are the same as functions.  That is: names can contain all letters, some numbers and symbols, but can't start with a number.  Just like with function names, variable names Names don't effect how they are used. Name things whatever you like but try to make the name meaningful.
 
@@ -143,17 +153,32 @@ int AddThreeTimes_v2(int x)
 
 > Exercise 4: What is the value returned by `AddThreeTimes_v2(11)`?
 
+
+> Note: If we only specify the type and name (e.g. `int addMe;` instead of `int addMe = 5;`) it is just called a **declaration** rather than a definition.
+
+We must always remember to declare a variable before we try to use it, otherwise we'll get an error:
+
+```c
+int Double()
+{
+    // BAD CODE!
+    return x + x;
+}
+```
+
+Herethe error is that the computer has no idea what we mean by `x`, so this code will not work
+
 ## Types
 
-Whether we are store values in variables, or are defining function's inputs or outputs we always need to tell `C` what kind of data we are working with, this is called the data's [type](./Terms.md). Some simple types are described below, we'll cover more complex types later.
+Whether we store values in variables, or are defining function's inputs or outputs we always need to tell `C` what kind of data we are working with, this is called the data's [type](./Terms.md). Some simple types are described below, we'll cover more complex types later.
 
 ### `int`
 
-This is the one we have seen already. `int`s are positive or negative whole numbers. The largest and smallest numbers that can be stored in an `int` will depend on the computer you are working with, but a range of *approximately* $-2^{32}$ (min) to $2^{32}$ (max) is common.
+This is the one we have seen already. `int`s are positive or negative whole numbers. The largest and smallest numbers that can be stored in an `int` will depend on the computer you are working with, but a range of *approximately* $-2^{31}$ (min) to $2^{31}$ (max) is common.
 
 ### `float` and `double`
 
-To use decimals, we need something other than integers. Another numeric type is `float`. This stand for `floating point`, a fancy way of saying a number that *might* include a decimal point.  1,2,3 are floats, but so are `1.1` and `2.1` and `3.1` and `1,234.5`.  Floating point numbers are often written in **exponential form** like `334e6`, which is an easy way of writing $334 * 10^6$.
+To use decimals, we need something other than integers. Another numeric type is `float`. This stand for `floating point`, a fancy way of saying a number that *might* include a decimal point.  1,2,3 are floats, but so are `1.1` and `2.1` and `3.1` and `1,234.5`.  Floating point numbers are often written in **exponential form** in code like `334e6`, which is an easy way of writing $334 * 10^6$.
 
 We can only store up to a certain precision of number in a float. For example, you can't store the exact value of $\pi$ in a `float` because it would require it to store infinitely many digits and we'd run out of memory. (we'll learn more on computer memory in a future section)
 
